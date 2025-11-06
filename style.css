@@ -1,0 +1,278 @@
+/* Globel stillar */
+:root {
+    --primary-bg: #121212;
+    --card-bg: rgba(30, 30, 30, 0.95);
+    --accent-green: #4CAF50;
+    --accent-blue: #2196F3;
+    --accent-purple: #9664fa;
+    --accent-pink: #fa6496;
+    --accent-teal: #64fa96;
+    --text-primary: #f0f0f0;
+    --text-secondary: #aaa;
+    --text-muted: #ccc;
+    --shadow: rgba(0, 0, 0, 0.5);
+    --instagram: #E1306C;
+    --telegram: #0088cc;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+    overflow: hidden;
+}
+
+/* --- Yangi va Takomillashtirilgan Fon Animatsiyalari --- */
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.8;
+}
+
+/* Gradient chiziqlar effekti */
+.background-animation::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(150, 100, 250, 0.1),
+        rgba(250, 100, 150, 0.1) 10px,
+        rgba(100, 250, 150, 0.1) 20px
+    );
+    background-size: 200% 200%;
+    animation: backgroundMove 30s linear infinite;
+}
+
+/* Yangi: Pulsatsiya effekti */
+.background-animation::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at 20% 80%,
+        rgba(150, 100, 250, 0.15) 0%,
+        transparent 50%
+    );
+    animation: pulseGlow 8s ease-in-out infinite alternate;
+}
+
+/* Yangi: Yulduzcha effekti */
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    animation: twinkle 4s infinite ease-in-out;
+}
+
+/* Yangi: Gradient nuqtalar effekti */
+.gradient-dots {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 25% 25%, var(--accent-purple) 2px, transparent 2px),
+        radial-gradient(circle at 75% 75%, var(--accent-pink) 2px, transparent 2px),
+        radial-gradient(circle at 50% 10%, var(--accent-teal) 2px, transparent 2px);
+    background-size: 200px 200px, 300px 300px, 250px 250px;
+    background-position: 0 0, 100px 100px, 50px 150px;
+    opacity: 0.1;
+    animation: floatDots 20s infinite linear;
+}
+
+/* Animatsiya kalit kadrlari */
+@keyframes backgroundMove {
+    from { background-position: 0 0; }
+    to { background-position: 200% 200%; }
+}
+
+@keyframes pulseGlow {
+    from { opacity: 0.3; }
+    to { opacity: 0.7; }
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes floatDots {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-10px, 10px); }
+    50% { transform: translate(0, 20px); }
+    75% { transform: translate(10px, 10px); }
+    100% { transform: translate(0, 0); }
+}
+
+/* --- Asosiy Kartochka Stili --- */
+.portfolio-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow);
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Profil Stili --- */
+.avatar {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: white;
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.1);
+    animation: pulse 2s infinite alternate, rotate 20s infinite linear;
+}
+
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.name {
+    margin-bottom: 5px;
+    color: var(--accent-green);
+    font-size: 1.5rem;
+}
+
+.role, .location {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+/* --- Ijtimoiy Tarmoqlar Stili --- */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 25px 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-button {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.social-button:hover::before {
+    left: 100%;
+}
+
+.social-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.instagram {
+    background-color: var(--instagram);
+    color: white;
+}
+
+.telegram {
+    background-color: var(--telegram);
+    color: white;
+}
+
+/* --- Qisqacha Ma'lumot Stili --- */
+.about-me {
+    text-align: left;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.about-me h3 {
+    color: var(--accent-blue);
+    margin-bottom: 10px;
+}
+
+.about-me p {
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+/* Responsive dizayn */
+@media (max-width: 480px) {
+    .portfolio-card {
+        padding: 20px;
+        width: 95%;
+    }
+    
+    .social-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .social-button {
+        width: 100%;
+    }
+}
