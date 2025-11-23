@@ -167,7 +167,6 @@ body {
     font-size: 40px;
     color: white;
     box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.1);
-    animation: pulse 2s infinite alternate, rotate 20s infinite linear;
 }
 
 @keyframes pulse {
